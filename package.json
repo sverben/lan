@@ -1,0 +1,10 @@
+{
+  "name": "streamingserver",
+  "version": "1.0.0",
+  "dependencies": {
+    "electron": "^20.0.2",
+    "express": "^4.18.1",
+    "node-media-server": "^2.4.7",
+    "rtsp-streaming-server": "^2.0.6"
+  }
+}

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flv.js/1.6.2/flv.min.js"></script>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bar">
+        <img class="brand" src="icon.png" alt="">
+        <div class="card">
+            <div class="name">IP</div>
+            <div class="value" id="ip">LOADING...</div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content" id="content">
+            <div class="grid" id="grid"></div>
+            <div class="nothing" id="nothing">
+                <h2 class="title">Geen verbindingen</h2>
+                <p class="text">Gebruik OBS om je scherm te streamen naar het IP rechtsboven<br>
+                De stream key moet worden ingesteld op je naam</p>
+            </div>
+        </div>
+    </div>
+    <div class="event" id="event">
+        <webview id="web" class="full"></webview>
+    </div>
+</body>
+</html>
