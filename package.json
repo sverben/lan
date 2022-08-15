@@ -1,6 +1,9 @@
 {
   "name": "streamingserver",
   "version": "1.0.0",
+  "scripts": {
+    "start": "electron ."
+  },
   "dependencies": {
     "electron": "^20.0.2",
     "express": "^4.18.1",
