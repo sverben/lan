@@ -3,6 +3,7 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const { networkInterfaces } = require('os');
 const path = require('path');
 const express = require('express');
+const conf = require('./config');
 
 const config = {
     logType: 0,
@@ -74,16 +75,16 @@ const site = express();
 site.use(express.static(path.join(__dirname, 'public')));
 site.get('/event', (req, res) => {
     if (!req.query.url) return;
-    if (req.query.password !== process.env.password) return;
+    if (req.query.password !== conf.password) return;
     res.redirect('/manage.html');
     window.webContents.send('event', req.query.url);
 });
 site.get('/close', (req, res) => {
-    if (req.query.password !== process.env.password) return;
+    if (req.query.password !== conf.password) return;
     res.redirect('/manage.html');
     window.webContents.send('close');
 });
-site.listen(80);
+site.listen(conf.port);
 
 ipcMain.on('get-ip', (event) => {
     window.webContents.send('ip', getIP());
