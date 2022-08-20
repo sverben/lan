@@ -46,7 +46,10 @@ const createServer = () => {
         // let session = nms.getSession(id);
         // session.reject();
         if (streams >= 4) {
-            nms.getSession(id).reject();
+            return nms.getSession(id).reject();
+        }
+        if (StreamPath.length > 10) {
+            return nms.getSession(id).reject();
         }
         streams++;
         window.webContents.send('new', StreamPath)
