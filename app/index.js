@@ -27,14 +27,14 @@ window.ipcRender.receive('new', (StreamPath) => {
     e.append(vid);
 
     grid.append(e);
-    streams.set(StreamPath, flvPlayer);
+    streams.set(StreamPath, { e, vid, flvPlayer });
     nothing.style.display = 'none';
 });
 window.ipcRender.receive('remove', (StreamPath) => {
-    const flvPlayer = streams.get(StreamPath);
+    const { e, vid, flvPlayer } = streams.get(StreamPath);
     flvPlayer.destroy();
     streams.delete(StreamPath);
-    grid.removeChild(grid.lastChild);
+    grid.removeChild(e);
 
     if (streams.size === 0) {
         nothing.style.display = 'flex';
