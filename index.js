@@ -45,7 +45,7 @@ const createServer = () => {
         console.log('[NodeEvent on prePublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
         // let session = nms.getSession(id);
         // session.reject();
-        if (streams >= 4) {
+        if (streams >= 3) {
             return nms.getSession(id).reject();
         }
         if (StreamPath.length > 10) {
