@@ -40,10 +40,15 @@ const createWindow = () => {
 
 const createServer = () => {
     const nms = new NodeMediaServer(config);
+    let streams = 0;
     nms.on('postPublish', (id, StreamPath, args) => {
         console.log('[NodeEvent on prePublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
         // let session = nms.getSession(id);
         // session.reject();
+        if (streams >= 4) {
+            nms.getSession(id).reject();
+        }
+        streams++;
         window.webContents.send('new', StreamPath)
     });
 
@@ -51,6 +56,7 @@ const createServer = () => {
     nms.on('donePublish', (id, StreamPath) => {
         console.log('[NodeEvent on done]', `id=${id}`);
         window.webContents.send('remove', StreamPath)
+        streams--;
     });
 
 
